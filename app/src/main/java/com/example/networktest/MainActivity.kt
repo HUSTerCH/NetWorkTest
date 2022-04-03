@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,SecondActivity::class.java)
             startActivity(intent)
         }
+        third_activity.setOnClickListener {
+            val intent = Intent(this,ThirdActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun sendRequestWithURLConnection() {
@@ -60,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 val client = OkHttpClient()
                 val request = Request.Builder()
-                    .url("https://www.baidu.com")
+                    .url("https://www.douyin.com/")
                     .build()
                 val response = client.newCall(request).execute()
                 val responseData = response.body?.string()
