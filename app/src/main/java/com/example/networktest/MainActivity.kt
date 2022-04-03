@@ -1,5 +1,6 @@
 package com.example.networktest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         }
         send_request_OkHttp.setOnClickListener {
             sendRequestWithOkHttp()
+        }
+        second_activity.setOnClickListener {
+            val intent = Intent(this,SecondActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -50,13 +55,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun showResponse(response: String) {
-        runOnUiThread {
-//            更新ui
-            responseText.text = response
-        }
-    }
     private fun sendRequestWithOkHttp() {
         thread {
             try {
@@ -70,6 +68,12 @@ class MainActivity : AppCompatActivity() {
             } catch (e:Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+    private fun showResponse(response: String) {
+        runOnUiThread {
+//            更新ui
+            responseText.text = response
         }
     }
 }
